@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Audio File Renamer</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Audio File Renamer</h1>
+
+        <div class="drop-zone" id="dropZone">
+            <h2>Drag and Drop Audio Files Here</h2>
+            <p>or</p>
+            <button class="button" onclick="document.getElementById('fileInput').click()">Select Files</button>
+            <input type="file" id="fileInput" multiple accept=".wav" style="display: none">
+        </div>
+
+        <div class="manual-input-section">
+            <h2>Custom Name Part</h2>
+            <div class="note-range">
+                <label>Note Range: </label>
+                <select id="startNote"></select>
+                <span>to</span>
+                <select id="endNote"></select>
+            </div>
+            <div class="pattern-controls">
+                <input type="text" id="manualFilenameInput" class="filename-input" 
+                       placeholder="Enter custom name (e.g., Fretless_Guitar_RR1)">
+            </div>
+            <div style="display: flex; justify-content: center; gap: 10px; margin: 20px 0;">
+                <button class="button generate-button" id="generateSequence">Generate Note Sequence</button>
+                <button class="button" id="resetButton">Reset</button>
+            </div>
+        </div>
+
+        <div class="file-list" style="margin-top: 20px;">
+            <h2>Update Base Name</h2>
+            <div class="pattern-controls">
+                <input type="text" id="newBaseName" class="filename-input" 
+                       placeholder="Enter new base name">
+            </div>
+            <div style="display: flex; justify-content: center; gap: 10px; margin: 20px 0;">
+                <button class="button" id="updateBaseNames">Update File Names</button>
+                <button class="button" id="resetBaseNames">Reset</button>
+            </div>
+        </div>
+
+        <div class="file-list" id="fileList">
+            <h2>Files to Process</h2>
+            <div class="preview-field">
+                <textarea id="previewArea" class="preview-textarea"></textarea>
+            </div>
+        </div>
+
+        <div class="file-list" style="margin-top: 20px;">
+            <button class="button" id="renameFilesButton">Rename Files on Desktop</button>
+        </div>
+
+        <div class="status" id="status"></div>
+    </div>
+
+    <script src="{{ url_for('static', filename='scripts.js') }}"></script>
+</body>
+</html>
